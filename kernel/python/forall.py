@@ -1,9 +1,4 @@
 
-import sys
-import os
-sys.path.append('/var/www/macunaima/kernel/python/')
-
-
 import web
 import forall.webapp
 

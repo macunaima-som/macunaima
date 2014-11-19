@@ -1,7 +1,3 @@
-
-import sys
-import os
-
 from pymongo import MongoClient
 import uuid
 import web
