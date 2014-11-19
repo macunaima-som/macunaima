@@ -19,9 +19,7 @@ class WebApp:
         self.dbm = dbmanager.DBManager()
         
     def GET(self):
-        x = ""
-        x = x + sys.path
-        return x
+        return "I CAN WORK"
     
         
         x = web.input(id = "")
