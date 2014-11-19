@@ -42,7 +42,6 @@ class WebApp:
 
     def show_dataset(self):
         dataset = self.dbm.find()
-        root = os.path.dirname(__file__)
         webpage = web.template.frender('templates/database_app.html')
         metadata = default_metadata
         metadata['DATE'] = time.strftime("%c")
