@@ -8,7 +8,7 @@ import web
 # Global variables
 import os
 here = os.path.dirname(__file__)
-filedir = os.path.join(here, 'static') # File storage directory
+filedir = os.path.join(here, 'static/pub') # File storage directory
 
 class DBManager():
     def __init__(self):
@@ -26,7 +26,8 @@ class DBManager():
             filepath=file_pointer.filename.replace('\\','/')
             filename=filepath.split('/')[-1]
             filename = id+filename
-            fout = open(os.path.join(filedir, filename) ,'w')
+            fout = open(os.path.abspath(
+os.path.join(filedir, filename)) ,'w')
             fout.write(file_pointer.file.read())
             fout.close()
         else:
