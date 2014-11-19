@@ -3,12 +3,12 @@ import sys
 import os
 
 #from pymongo import MongoClient
-#import uuid
-#import web
-#import time
+import uuid
+import web
+import time
 
-#import dbmanager
-#import text_to_dict
+import dbmanager
+import text_to_dict
 
 default_metadata = {'TITLE': '',
                     'AUTHOR': 'Anonymous',
