@@ -1,4 +1,3 @@
-import os
 from pymongo import MongoClient
 import time
 import uuid
@@ -6,8 +5,6 @@ import web
 
 import dbmanager
 import text_to_dict
-
-root = os.path.dirname(__file__)
 
 default_metadata = {'TITLE': '',
                     'AUTHOR': 'Anonymous',
@@ -46,13 +43,13 @@ class WebApp:
     def show_dataset(self):
         dataset = self.dbm.find()
         root = os.path.dirname(__file__)
-        webpage = web.template.frender(os.path.join(root, '..', 'templates/database_app.html'))
+        webpage = web.template.frender('templates/database_app.html')
         metadata = default_metadata
         metadata['DATE'] = time.strftime("%c")
         return webpage(dataset=dataset, metadata=text_to_dict.dict_to_text(default_metadata))  
 
     def show_specific(self, id):
         dataset = self.dbm.find( { "_id": id } )
-        webpage = web.template.frender(os.path.join(root, '..', 'templates/database_app.html'))
+        webpage = web.template.frender('templates/database_app.html')
         return webpage(metadata=text_to_dict.dict_to_text(dataset[0]['metadata']),
                     id=dataset[0]['_id'], filename=dataset[0]['filename'])
