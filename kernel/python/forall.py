@@ -1,6 +1,10 @@
 
-import web
+import sys
+import os
+sys.path.append(os.getcwd())
 
+
+import web
 import forall.webapp
 
 
