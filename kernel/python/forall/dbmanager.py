@@ -6,7 +6,9 @@ import uuid
 import web
 
 # Global variables
-filedir = './static/pub/' # File storage directory
+import os
+here = os.path.dirname(__file__)
+filedir = os.path.join(here, 'static/pub') # File storage directory
 
 class DBManager():
     def __init__(self):
