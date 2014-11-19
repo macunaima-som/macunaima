@@ -1,0 +1,41 @@
+$def with (dataset, metadata)
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>FORALL Data Nucleus</title>
+</head>
+
+<body>
+<h1>FORALL Data Nucleus</h1>
+
+<p>
+Send more data!<br \>
+<form method="POST" enctype="multipart/form-data" action="/">
+  Please, insert metadata:<br \>
+  <textarea name="metadata" rows=25 cols=60>
+$metadata
+</textarea><br \>
+<input type="file" name="myfile" />
+<br \>
+<input type="hidden" name="action" value="insert" \>
+<input type="submit" />
+</form>
+</p>
+
+<hr>
+<h1>Full list of recorded data:</h1>
+
+$for data_obj in dataset:
+  <hr><p>
+  <h2><a href="?id=$data_obj['_id']">$data_obj['metadata']['TITLE']
+  ($data_obj['metadata']['AUTHOR'])<a></h2>
+  $for data_type in data_obj['metadata'].keys():
+     $if data_type not in ['TITLE', 'AUTHOR']:
+           <b>$data_type</b>: $data_obj['metadata'][data_type]<br \>
+  <a href="./static/pub/$data_obj['filename']">Quick download</a>
+  </p>
+
+
+<hr>
+<address></address>
+<!-- hhmts start -->Last modified: Fri Sep 26 09:55:48 BRT 2014 <!-- hhmts end -->
+</body> </html>
