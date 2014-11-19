@@ -50,6 +50,6 @@ class WebApp:
 
     def show_specific(self, id):
         dataset = self.dbm.find( { "_id": id } )
-        webpage = web.template.frender('templates/database_app.html')
+        webpage = web.template.frender('templates/view_app.html')
         return webpage(metadata=text_to_dict.dict_to_text(dataset[0]['metadata']),
                     id=dataset[0]['_id'], filename=dataset[0]['filename'])
