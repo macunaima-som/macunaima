@@ -22,11 +22,11 @@ class WebApp:
         return "I CAN WORK"
     
         
-        x = web.input(id = "")
-        if x.id == "":
-            return self.show_dataset()
-        else:
-            return self.show_specific(x.id)
+       # x = web.input(id = "")
+       # if x.id == "":
+       #     return self.show_dataset()
+       # else:
+       #     return self.show_specific(x.id)
 
     def POST(self):
         x = web.input(myfile={}, metadata="", action="")
