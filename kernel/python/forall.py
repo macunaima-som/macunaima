@@ -1,6 +1,6 @@
 
 import os
-here = os.path.dirname(__file___)
+here = os.path.dirname(__file__)
 
 import sys
 if here not in sys.path:
