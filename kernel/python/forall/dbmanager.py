@@ -8,7 +8,7 @@ import web
 # Global variables
 import os
 here = os.path.dirname(__file__)
-filedir = os.path.join(here, 'static/pub') # File storage directory
+filedir = os.path.join(here, 'static') # File storage directory
 
 class DBManager():
     def __init__(self):
