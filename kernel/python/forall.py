@@ -1,6 +1,13 @@
 
+import os
+here = os.path.dirname(__file___)
+
+import sys
+if here not in sys.path:
+    sys.path.append(here)
 
 import web
+
 import forall.webapp
 
 urls = (".*", "forall.webapp.WebApp")
