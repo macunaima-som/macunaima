@@ -1,11 +1,14 @@
 
-from pymongo import MongoClient
-import uuid
-import web
-import time
+import sys
+import os
 
-import dbmanager
-import text_to_dict
+#from pymongo import MongoClient
+#import uuid
+#import web
+#import time
+
+#import dbmanager
+#import text_to_dict
 
 default_metadata = {'TITLE': '',
                     'AUTHOR': 'Anonymous',
@@ -20,6 +23,11 @@ class WebApp:
         self.dbm = dbmanager.DBManager()
         
     def GET(self):
+        x = ""
+        x = x + sys.path
+        return x
+    
+        
         x = web.input(id = "")
         if x.id == "":
             return self.show_dataset()
