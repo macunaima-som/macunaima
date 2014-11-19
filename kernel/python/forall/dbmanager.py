@@ -26,7 +26,7 @@ class DBManager():
             filepath=file_pointer.filename.replace('\\','/')
             filename=filepath.split('/')[-1]
             filename = id+filename
-            fout = open(filedir +'/'+ filename,'w')
+            fout = open(os.path.join(filedir, filename) ,'w')
             fout.write(file_pointer.file.read())
             fout.close()
         else:
