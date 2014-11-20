@@ -62,7 +62,8 @@ os.path.join(filedir, filename)) ,'w')
             filename = self.find({ '_id' : id})[0]['filename']
 
         self.collection.remove({ "_id": id })
-        os.remove(filedir + filename)
+        os.remove(os.path.abspath(
+os.path.join(filedir, filename)))
         return True
 
     def update(self, id, metadata):
