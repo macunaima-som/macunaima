@@ -6,7 +6,9 @@ import uuid
 import web
 
 # Global variables
-filedir = './static/pub/' # File storage directory
+import os
+here = os.path.dirname(__file__)
+filedir = os.path.join(here, 'static/pub') # File storage directory
 
 class DBManager():
     def __init__(self):
@@ -24,7 +26,8 @@ class DBManager():
             filepath=file_pointer.filename.replace('\\','/')
             filename=filepath.split('/')[-1]
             filename = id+filename
-            fout = open(filedir +'/'+ filename,'w')
+            fout = open(os.path.abspath(
+os.path.join(filedir, filename)) ,'w')
             fout.write(file_pointer.file.read())
             fout.close()
         else:
@@ -59,7 +62,8 @@ class DBManager():
             filename = self.find({ '_id' : id})[0]['filename']
 
         self.collection.remove({ "_id": id })
-        os.remove(filedir + filename)
+        os.remove(os.path.abspath(
+os.path.join(filedir, filename)))
         return True
 
     def update(self, id, metadata):

@@ -1,17 +1,16 @@
 
-import sys
 import os
-sys.path.append('/var/www/macunaima/kernel/python/')
+here = os.path.dirname(__file__)
 
+import sys
+if here not in sys.path:
+    sys.path.append(here)
 
 import web
+
 import forall.webapp
 
-
-urls = ("/", "forall.webapp.WebApp")
-
-app = web.application(urls, globals())
+urls = (".*", "forall.webapp.WebApp")
+application = web.application(urls, globals()).wsgifunc()
 
 
-if __name__ == "__main__":
-    app.run()

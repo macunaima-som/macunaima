@@ -1,8 +1,8 @@
-
+import os
 from pymongo import MongoClient
+import time
 import uuid
 import web
-import time
 
 import dbmanager
 import text_to_dict
@@ -19,7 +19,7 @@ class WebApp:
     def __init__(self):
         self.dbm = dbmanager.DBManager()
         
-    def GET(self):
+    def GET(self):        
         x = web.input(id = "")
         if x.id == "":
             return self.show_dataset()
@@ -43,13 +43,14 @@ class WebApp:
 
     def show_dataset(self):
         dataset = self.dbm.find()
-        webpage = web.template.frender('templates/database_app.html')
+
+        webpage = web.template.frender(os.path.join(os.path.dirname(__file__), 'templates/database_app.html'))
         metadata = default_metadata
         metadata['DATE'] = time.strftime("%c")
         return webpage(dataset=dataset, metadata=text_to_dict.dict_to_text(default_metadata))  
 
     def show_specific(self, id):
         dataset = self.dbm.find( { "_id": id } )
-        webpage = web.template.frender('templates/view_app.html')
+        webpage = web.template.frender(os.path.join(os.path.dirname(__file__), 'templates/view_app.html'))
         return webpage(metadata=text_to_dict.dict_to_text(dataset[0]['metadata']),
                     id=dataset[0]['_id'], filename=dataset[0]['filename'])
