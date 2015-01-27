@@ -1,28 +1,28 @@
 $def with (dataset, metadata)
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html> <head>
-<title>FORALL Data Nucleus</title>
+<title>MaCuNaIMA</title>
 </head>
 
 <body>
-<h1>FORALL Data Nucleus</h1>
+<h1>MaCuNaIMA</h1>
 
 <p>
-Send more data!<br \>
-<form method="POST" enctype="multipart/form-data">
-  Please, insert metadata:<br \>
+Envio de dados!<br \>
+<form method="POST" enctype="multipart/form-data" action="/">
+  Por favor, insira metadados:<br \>
   <textarea name="metadata" rows=25 cols=60>
 $metadata
 </textarea><br \>
 <input type="file" name="myfile" />
 <br \>
 <input type="hidden" name="action" value="insert" \>
-<input type="submit" />
+<input type="submit" value="Enviar" />
 </form>
 </p>
 
 <hr>
-<h1>Full list of recorded data:</h1>
+<h1>Banco de dados completo:</h1>
 
 $for data_obj in dataset:
   <hr><p>
@@ -31,11 +31,11 @@ $for data_obj in dataset:
   $for data_type in data_obj['metadata'].keys():
      $if data_type not in ['TITLE', 'AUTHOR']:
            <b>$data_type</b>: $data_obj['metadata'][data_type]<br \>
-  <a href="./static/pub/$data_obj['filename']">Quick download</a>
+  <a href="./static/pub/$data_obj['filename']">Download</a>
   </p>
 
 
 <hr>
 <address></address>
-<!-- hhmts start -->Last modified: Wed Nov 19 21:15:41 BRST 2014 <!-- hhmts end -->
+<!-- hhmts start -->Last modified: Tue Jan 27 08:49:25 BRST 2015 <!-- hhmts end -->
 </body> </html>
